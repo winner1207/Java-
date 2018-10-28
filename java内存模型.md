@@ -1,8 +1,8 @@
-#示例代码
+# 示例代码
 [CountExample1.java](src\main\java\com\mmall\concurrency\example\count\CountExample1.java)
 
 
-#JAVA内存模型规范：
+# JAVA内存模型规范：
 - 规定了一个线程如何和何时可以看到其他线程修改过后的共享变量的值
 - 如何以及何时同步的访问共享变量
 
@@ -25,7 +25,7 @@ java内存模型要求调用栈和本地内存变量存放在线程栈（Thread 
 如果两个线程同时访问同一个对象的私有变量，这时他们获得的是这个对象的私有拷贝
 </pre>
 
-#计算机硬件架构：
+# 计算机硬件架构：
 
 ![](https://upload-images.jianshu.io/upload_images/7220971-d537fdbba15fa90a.png?imageMogr2/auto-orient/)
 
@@ -41,7 +41,7 @@ CPU Cache（高速缓存）：由于计算机的存储设备与处理器的处�
 当运行结束后，会将寄存器中的值刷新回缓存中，并在某个时间点刷新回主存
 </pre>
 
-#内存模型与硬件架构之间的关联：
+# 内存模型与硬件架构之间的关联：
 
 ![](https://upload-images.jianshu.io/upload_images/7220971-d101210475dfd689.png?imageMogr2/auto-orient/)
 
@@ -49,7 +49,7 @@ CPU Cache（高速缓存）：由于计算机的存储设备与处理器的处�
 硬件架构没有区分线程栈和堆，对于硬件而言所有线程栈和堆都分布在主内存里面，部分可能会出现在CPU缓存中和CPU内部的寄存器里面
 </pre>
 
-#线程和主内存的抽象关系
+# 线程和主内存的抽象关系
 
 ![](https://upload-images.jianshu.io/upload_images/7220971-9e6e471800d7db9c.png?imageMogr2/auto-orient/)
 
@@ -66,7 +66,7 @@ CPU Cache（高速缓存）：由于计算机的存储设备与处理器的处�
 2、B从主内存中读取变量
 </pre>
 
-#八种同步操作
+# 八种同步操作
 
 ![](https://upload-images.jianshu.io/upload_images/7220971-c543ab6c653a0979.png?imageMogr2/auto-orient/)
 
@@ -79,7 +79,7 @@ CPU Cache（高速缓存）：由于计算机的存储设备与处理器的处�
 - 7.store（存储）：作用于工作内存的变量，把工作内存中的一个变量的值传送到主内存中，以便随后的write的操作
 - 8.write（写入）：作用于主内存的变量，它把store操作从工作内存中一个变量的值传送到主内存的变量中
 
-#同步规则
+# 同步规则
 
 - 1.如果要把一个变量从主内存中赋值到工作内存，就需要按顺序得执行read和load操作，如果把变量从工作内存中同步回主内存中，就要按顺序得执行store和write操作，但java内存模型只要求上述操作必须按顺序执行，没有保证必须是连续执行
 - 2.不允许read和load、store和write操作之一单独出现
@@ -91,7 +91,7 @@ CPU Cache（高速缓存）：由于计算机的存储设备与处理器的处�
 - 8.如果一个变量事先没有被lock操作锁定，则不允许他执行unlock操作，也不允许去unlock一个被其他线程锁定的变量
 - 9.对一个变量执行unlock操作之前，必须先把此变量同步到主内存中（执行store和write操作）
 
-#并发的优势和风险
+# 并发的优势和风险
 
 ![](https://upload-images.jianshu.io/upload_images/7220971-6cf225e4d4a6b0f8.png?imageMogr2/auto-orient/)
 
