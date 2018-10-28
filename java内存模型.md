@@ -1,5 +1,5 @@
 # 示例代码
-[CountExample1.java](src\main\java\com\mmall\concurrency\example\count\CountExample1.java)
+[CountExample1.java](Java-concurrency/src/main/java/com/mmall/concurrency/example/count/CountExample1.java)
 
 
 # JAVA内存模型规范：
