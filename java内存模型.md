@@ -98,5 +98,4 @@ CPU Cache（高速缓存）：由于计算机的存储设备与处理器的处�
 
 # 并发的优势和风险
 
-![](https://upload-images.jianshu.io/upload_images/7220971-6cf225e4d4a6b0f8.png?imageMogr2/auto-orient/)
-
+![](https://upload-images.jianshu.io/upload_images/7220971-6cf225e4d4a6b0f8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp)
