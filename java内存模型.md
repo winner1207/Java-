@@ -1,5 +1,6 @@
 # 示例代码
-[CountExample1.java](src/main/java/com/mmall/concurrency/example/count/CountExample1.java)
+
+- 线程不安全：[CountExample1.java](src/main/java/com/mmall/concurrency/example/count/CountExample1.java)
 
 
 # JAVA内存模型规范：
