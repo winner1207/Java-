@@ -1,5 +1,5 @@
 # 一.synchronized的缺陷
-　  synchronized是java中的一个关键字，也就是说是Java语言内置的特性。那么为什么会出现Lock呢？
+　　synchronized是java中的一个关键字，也就是说是Java语言内置的特性。那么为什么会出现Lock呢？
 
 　　在上面一篇文章中，我们了解到如果一个代码块被synchronized修饰了，当一个线程获取了对应的锁，并执行该代码块时，其他线程便只能一直等待，等待获取锁的线程释放锁，而这里获取锁的线程释放锁只会有两种情况：
 
@@ -44,7 +44,7 @@ public interface Lock {
 }
 </pre>
 
-   下面来逐个讲述Lock接口中每个方法的使用，lock()、tryLock()、tryLock(long time, TimeUnit unit)和lockInterruptibly()是用来获取锁的。unLock()方法是用来释放锁的。newCondition()这个方法暂且不在此讲述，会在后面的线程协作一文中讲述。
+　　下面来逐个讲述Lock接口中每个方法的使用，lock()、tryLock()、tryLock(long time, TimeUnit unit)和lockInterruptibly()是用来获取锁的。unLock()方法是用来释放锁的。newCondition()这个方法暂且不在此讲述，会在后面的线程协作一文中讲述。
 
 　　在Lock中声明了四个方法来获取锁，那么这四个方法有何区别呢？
 
