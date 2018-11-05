@@ -201,7 +201,7 @@ public class Test {
 }
 </pre>
 
-   这样就是正确地使用Lock的方法了。
+　　这样就是正确地使用Lock的方法了。
 
 　　例子2，tryLock()的使用方法
 
@@ -245,10 +245,12 @@ public class Test {
 }
 </pre>
 
-   输出结果：
-`Thread-0得到了锁`
-`Thread-1获取锁失败`
-`Thread-0释放了锁`
+　　输出结果：
+<pre>
+Thread-0得到了锁
+Thread-1获取锁失败
+Thread-0释放了锁
+</pre>
 
 　 例子3，lockInterruptibly()响应中断的使用方法：
 
@@ -373,6 +375,82 @@ public class Test {
 
 　　这段程序的输出结果会是，直到thread1执行完读操作之后，才会打印thread2执行读操作的信息。
 
+<pre>
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0读操作完毕
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1读操作完毕
+</pre>
+
 　　而改成用读写锁的话：
 
 <pre>
@@ -410,6 +488,60 @@ public class Test {
         }
     }
 }
+</pre>
+
+ 　　此时打印的结果为：
+
+<pre>
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-1正在进行读操作
+Thread-0正在进行读操作
+Thread-1正在进行读操作
+Thread-0正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-0正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-0正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-0正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-0正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-0正在进行读操作
+Thread-1正在进行读操作
+Thread-1正在进行读操作
+Thread-0正在进行读操作
+Thread-1正在进行读操作
+Thread-0正在进行读操作
+Thread-1正在进行读操作
+Thread-0正在进行读操作
+Thread-1正在进行读操作
+Thread-0正在进行读操作
+Thread-1正在进行读操作
+Thread-0正在进行读操作
+Thread-1正在进行读操作
+Thread-0正在进行读操作
+Thread-1正在进行读操作
+Thread-0正在进行读操作
+Thread-1正在进行读操作
+Thread-0读操作完毕
+Thread-1读操作完毕
 </pre>
 
 　　说明thread1和thread2在同时进行读操作。
