@@ -128,7 +128,7 @@ public ConcurrentSkipListSet() {
 示例代码：[ConcurrentSkipListMapExample.java](../src/main/java/com/mmall/concurrency/example/concurrent/ConcurrentSkipListMapExample.java)
 
 - 底层实现采用SkipList跳表
-- 曾经有人用ConcurrentHashMap与ConcurrentSkipListMap做性能测试，在4个线程1.6W的数据条件下，前者的数据存取速度是后者的4倍左右。但是后者有几个前者不能比拟的优点： 
+- 用ConcurrentHashMap与ConcurrentSkipListMap做性能测试，在4个线程1.6W的数据条件下，前者的数据存取速度是后者的4倍左右。但是后者有几个前者不能比拟的优点： 
 1、Key是有序的 
 2、支持更高的并发，存储时间与线程数无关
 
