@@ -112,7 +112,7 @@ public ConcurrentSkipListSet() {
 - 不允许空值，在实际的应用中除了少数的插入操作和删除操作外，绝大多数我们使用map都是读取操作。而且读操作大多数都是成功的。基于这个前提，它针对读操作做了大量的优化。因此这个类在高并发环境下有特别好的表现。
 - ConcurrentHashMap作为Concurrent一族，其有着高效地并发操作，相比Hashtable的笨重，ConcurrentHashMap则更胜一筹了。
 - 在1.8版本以前，ConcurrentHashMap采用分段锁的概念，使锁更加细化，但是1.8已经改变了这种思路，而是利用CAS+Synchronized来保证并发更新的安全，当然底层采用数组+链表+红黑树的存储结构。
-- 源码分析：推荐参考博文：[J.U.C之Java并发容器：ConcurrentHashMap]("https://blog.csdn.net/chenssy/article/details/73521950")
+- 源码分析：推荐参考博文：[J.U.C之Java并发容器：ConcurrentHashMap](https://blog.csdn.net/chenssy/article/details/73521950)
 
 ## TreeMap –> ConcurrentSkipListMap
 
