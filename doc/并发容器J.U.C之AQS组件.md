@@ -76,6 +76,8 @@ countDownLatch.await(10, TimeUnit.MILLISECONDS);
 - 使用场景：仅能提供有限访问的资源。比如数据库连接。
 - Semaphore使用acquire方法和release方法来实现控制：
 
+示例代码：[SemaphoreExample1.java](../src/main/java/com/mmall/concurrency/example/aqs/SemaphoreExample1.java)
+
 <pre>
 /**
  * 1、普通调用
@@ -87,7 +89,11 @@ try {
 } catch (Exception e) {
      log.error("exception", e);
 }
+</pre>
 
+示例代码：[SemaphoreExample2.java](../src/main/java/com/mmall/concurrency/example/aqs/SemaphoreExample2.java)
+
+<pre>
 /**
  * 2、同时获取多个许可，同时释放多个许可
  */
@@ -98,7 +104,11 @@ try {
 } catch (Exception e) {
      log.error("exception", e);
 }
+</pre>
 
+示例代码：[SemaphoreExample3.java](../src/main/java/com/mmall/concurrency/example/aqs/SemaphoreExample3.java)
+
+<pre>
 /*
  * 3、尝试获取许可，获取不到不执行
  */
@@ -110,7 +120,11 @@ try {
  } catch (Exception e) {
      log.error("exception", e);
 }
+</pre>
 
+示例代码：[SemaphoreExample4.java](../src/main/java/com/mmall/concurrency/example/aqs/SemaphoreExample4.java)
+
+<pre>
 /*
  * 4、尝试获取许可一段时间，获取不到不执行
  * 参数1：等待时间长度  参数2：等待时间单位
@@ -156,7 +170,11 @@ public static void main(String[] args) throws Exception {
     }
     executor.shutdown();
 }
+</pre>
 
+示例代码：[CyclicBarrierExample1.java](../src/main/java/com/mmall/concurrency/example/aqs/CyclicBarrierExample1.java)
+
+<pre>
 //使用方法1：每个线程都持续等待
 private static void race(int threadNum) throws Exception {
     Thread.sleep(1000);
@@ -164,7 +182,11 @@ private static void race(int threadNum) throws Exception {
     barrier.await();
     log.info("{} continue", threadNum);
 }
+</pre>
 
+示例代码：[CyclicBarrierExample2.java](../src/main/java/com/mmall/concurrency/example/aqs/CyclicBarrierExample2.java)
+
+<pre>
 //使用方法2：每个线程只等待一段时间
 private static void race(int threadNum) throws Exception {
     Thread.sleep(1000);
@@ -174,7 +196,11 @@ private static void race(int threadNum) throws Exception {
         log.warn("BarrierException", e);
     }
 }
+</pre>
 
+示例代码：[CyclicBarrierExample3.java](../src/main/java/com/mmall/concurrency/example/aqs/CyclicBarrierExample3.java)
+
+<pre>
 //使用方法3：在初始化的时候设置runnable，当线程达到屏障时优先执行runnable
 private static CyclicBarrier barrier = new CyclicBarrier(5, () -> {
     log.info("callback is running");
