@@ -76,12 +76,10 @@ countDownLatch.await(10, TimeUnit.MILLISECONDS);
 - 使用场景：仅能提供有限访问的资源。比如数据库连接。
 - Semaphore使用acquire方法和release方法来实现控制：
 
-示例代码：[SemaphoreExample1.java](../src/main/java/com/mmall/concurrency/example/aqs/SemaphoreExample1.java)
+- 普通调用
+	* 示例代码：[SemaphoreExample1.java](../src/main/java/com/mmall/concurrency/example/aqs/SemaphoreExample1.java)
 
 <pre>
-/**
- * 1、普通调用
- */
 try {
      semaphore.acquire(); // 获取一个许可
      test();//需要并发控制的内容
@@ -91,12 +89,10 @@ try {
 }
 </pre>
 
-示例代码：[SemaphoreExample2.java](../src/main/java/com/mmall/concurrency/example/aqs/SemaphoreExample2.java)
+- 同时获取多个许可，同时释放多个许可
+	* 示例代码：[SemaphoreExample2.java](../src/main/java/com/mmall/concurrency/example/aqs/SemaphoreExample2.java)
 
 <pre>
-/**
- * 2、同时获取多个许可，同时释放多个许可
- */
  try {
      semaphore.acquire(2);
      test();
@@ -106,12 +102,10 @@ try {
 }
 </pre>
 
-示例代码：[SemaphoreExample3.java](../src/main/java/com/mmall/concurrency/example/aqs/SemaphoreExample3.java)
+- 尝试获取许可，获取不到不执行
+	* 示例代码：[SemaphoreExample3.java](../src/main/java/com/mmall/concurrency/example/aqs/SemaphoreExample3.java)
 
 <pre>
-/*
- * 3、尝试获取许可，获取不到不执行
- */
  try {
      if (semaphore.tryAcquire()) {
         test(threadNum);
@@ -122,13 +116,12 @@ try {
 }
 </pre>
 
-示例代码：[SemaphoreExample4.java](../src/main/java/com/mmall/concurrency/example/aqs/SemaphoreExample4.java)
+- 尝试获取许可一段时间，获取不到不执行
+ * 参数1：等待时间长度  
+ * 参数2：等待时间单位
+ * 示例代码：[SemaphoreExample4.java](../src/main/java/com/mmall/concurrency/example/aqs/SemaphoreExample4.java)
 
 <pre>
-/*
- * 4、尝试获取许可一段时间，获取不到不执行
- * 参数1：等待时间长度  参数2：等待时间单位
- */
 try {
      if (semaphore.tryAcquire(5000, TimeUnit.MILLISECONDS)) {
         test(threadNum);
@@ -147,8 +140,8 @@ try {
 - 通过它可以完成多个线程之间相互等待，只有每个线程都准备就绪后才能继续往下执行后面的操作。
 - 每当有一个线程执行了await方法，计数器就会执行+1操作，待计数器达到预定的值，所有的线程再同时继续执行。由于计数器释放之后可以重用（reset方法），所以称之为循环屏障。
 - 与CountDownLatch区别： 
-1、计数器可重复用 
-2、描述一个或多个线程等待其他线程的关系/多个线程相互等待
+	* 1、计数器可重复用 
+	* 2、描述一个或多个线程等待其他线程的关系/多个线程相互等待
 
 <pre>
 //公共线程循环调用方法
@@ -172,10 +165,10 @@ public static void main(String[] args) throws Exception {
 }
 </pre>
 
-示例代码：[CyclicBarrierExample1.java](../src/main/java/com/mmall/concurrency/example/aqs/CyclicBarrierExample1.java)
+- 使用方法1：每个线程都持续等待
+	* 示例代码：[CyclicBarrierExample1.java](../src/main/java/com/mmall/concurrency/example/aqs/CyclicBarrierExample1.java)
 
 <pre>
-//使用方法1：每个线程都持续等待
 private static void race(int threadNum) throws Exception {
     Thread.sleep(1000);
     log.info("{} is ready", threadNum);
@@ -184,10 +177,10 @@ private static void race(int threadNum) throws Exception {
 }
 </pre>
 
-示例代码：[CyclicBarrierExample2.java](../src/main/java/com/mmall/concurrency/example/aqs/CyclicBarrierExample2.java)
+- 使用方法2：每个线程只等待一段时间
+	* 示例代码：[CyclicBarrierExample2.java](../src/main/java/com/mmall/concurrency/example/aqs/CyclicBarrierExample2.java)
 
 <pre>
-//使用方法2：每个线程只等待一段时间
 private static void race(int threadNum) throws Exception {
     Thread.sleep(1000);
     try {
@@ -198,10 +191,10 @@ private static void race(int threadNum) throws Exception {
 }
 </pre>
 
-示例代码：[CyclicBarrierExample3.java](../src/main/java/com/mmall/concurrency/example/aqs/CyclicBarrierExample3.java)
+- 使用方法3：在初始化的时候设置runnable，当线程达到屏障时优先执行runnable
+	* 示例代码：[CyclicBarrierExample3.java](../src/main/java/com/mmall/concurrency/example/aqs/CyclicBarrierExample3.java)
 
 <pre>
-//使用方法3：在初始化的时候设置runnable，当线程达到屏障时优先执行runnable
 private static CyclicBarrier barrier = new CyclicBarrier(5, () -> {
     log.info("callback is running");
 });
