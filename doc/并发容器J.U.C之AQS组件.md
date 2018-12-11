@@ -37,7 +37,9 @@ AQS内部维护了一个CLH队列来管理锁。线程会首先尝试获取锁�
 
 我们定义一个CountDownLatch，通过给定的计数器为其初始化，该计数器是原子性操作，保证同时只有一个线程去操作该计数器。调用该类await方法的线程会一直处于阻塞状态。只有其他线程调用countDown方法（每次使计数器-1），使计数器归零才能继续执行。
 
+`
 示例代码：[CountDownLatchExample1.java](../src/main/java/com/mmall/concurrency/example/aqs/CountDownLatchExample1.java)
+`
 
 <pre>
 final CountDownLatch countDownLatch = new CountDownLatch(threadCount);
