@@ -4,13 +4,12 @@ AQS全名：AbstractQueuedSynchronizer，是并发容器J.U.C（java.lang.concur
 
 ![](https://img-blog.csdn.net/20180423180428455?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
-Sync queue：同步队列，是一个双向列表。包括head节点和tail节点。head节点主要用作后续的调度。 
-
-Condition queue：非必须，单向列表。当程序中存在cindition的时候才会存在此列表。
+- Sync queue：同步队列，是一个双向列表。包括head节点和tail节点。head节点主要用作后续的调度。 
+- Condition queue：非必须，单向列表。当程序中存在condition的时候才会存在此列表。
 
 # AQS设计思想
 
-- 使用Node实现FIFO队列，可以用于构建锁或者其他同步装置的基础框架。
+- 使用Node实现FIFO(first in、first out)队列，可以用于构建锁或者其他同步装置的基础框架。
 - 利用int类型标识状态。在AQS类中有一个叫做state的成员变量
 
 <pre>
@@ -20,7 +19,7 @@ Condition queue：非必须，单向列表。当程序中存在cindition的时�
 private volatile int state;
 </pre>
 
-- 基于AQS有一个同步组件，叫做ReentrantLock。在这个组件里，stste表示获取锁的线程数，假如state=0，表示还没有线程获取锁，1表示有线程获取了锁。大于1表示重入锁的数量。
+- 基于AQS有一个同步组件，叫做ReentrantLock。在这个组件里，state表示获取锁的线程数，假如state=0，表示还没有线程获取锁，1表示有线程获取了锁。大于1表示重入锁的数量。
 - 继承：子类通过继承并通过实现它的方法管理其状态（acquire和release方法操纵状态）。
 - 可以同时实现排它锁和共享锁模式（独占、共享），站在一个使用者的角度，AQS的功能主要分为两类：独占和共享。它的所有子类中，要么实现并使用了它的独占功能的api，要么使用了共享锁的功能，而不会同时使用两套api，即便是最有名的子类ReentrantReadWriteLock也是通过两个内部类读锁和写锁分别实现了两套api来实现的。
 
@@ -37,6 +36,8 @@ AQS内部维护了一个CLH队列来管理锁。线程会首先尝试获取锁�
 通过一个计数来保证线程是否需要被阻塞。实现一个或多个线程等待其他线程执行的场景。
 
 我们定义一个CountDownLatch，通过给定的计数器为其初始化，该计数器是原子性操作，保证同时只有一个线程去操作该计数器。调用该类await方法的线程会一直处于阻塞状态。只有其他线程调用countDown方法（每次使计数器-1），使计数器归零才能继续执行。
+
+示例代码：[CountDownLatchExample1.java](../src/main/java/com/mmall/concurrency/example/aqs/CountDownLatchExample1.java)
 
 <pre>
 final CountDownLatch countDownLatch = new CountDownLatch(threadCount);
@@ -57,6 +58,8 @@ countDownLatch.await();
 </pre>
 
 CountDownLatch的await方法还有重载形式，可以设置等待的时间，如果超过此时间，计数器还未清零，则不继续等待：
+
+示例代码：[CountDownLatchExample2.java](../src/main/java/com/mmall/concurrency/example/aqs/CountDownLatchExample2.java)
 
 <pre>
 countDownLatch.await(10, TimeUnit.MILLISECONDS);
