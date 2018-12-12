@@ -7,5 +7,6 @@
 - [安全发布对象](doc/安全发布对象.md)
 - [线程安全策略](doc/线程安全策略.md)
 - [并发容器J.U.C](doc/并发容器J.U.C.md)
-- [并发容器J.U.C之AQS组件](doc/并发容器J.U.C之AQS组件.md)
+- [并发容器J.U.C组件AQS](doc/并发容器J.U.C组件AQS.md)
+- [并发容器J.U.C组件FutureTask、ForkJoin、BlockingQueue](doc/并发容器J.U.C组件FutureTask、ForkJoin、BlockingQueue.md)
 
