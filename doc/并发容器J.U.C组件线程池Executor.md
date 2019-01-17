@@ -25,9 +25,10 @@
 - workQueue：阻塞队列，存储等待执行的任务，很重要，会对线程池运行过程产生重大影响
 
 > 当我们提交一个新的任务到线程池，线程池会根据当前池中正在运行的线程数量来决定该任务的处理方式。处理方式有三种： 
-> 1、直接切换（SynchronusQueue） 
-> 2、无界队列（LinkedBlockingQueue）能够创建的最大线程数为corePoolSize,这时maximumPoolSize就不会起作用了。当线程池中所有的核心线程都是运行状态的时候，新的任务提交就会放入等待队列中。 
-> 3、有界队列（ArrayBlockingQueue）最大maximumPoolSize，能够降低资源消耗，但是这种方式使得线程池对线程调度变的更困难。因为线程池与队列容量都是有限的。所以想让线程池的吞吐率和处理任务达到一个合理的范围，又想使我们的线程调度相对简单，并且还尽可能降低资源的消耗，我们就需要合理的限制这两个数量 
+
+> 1. 直接切换（SynchronusQueue）
+> 2. 无界队列（LinkedBlockingQueue）能够创建的最大线程数为corePoolSize,这时maximumPoolSize就不会起作用了。当线程池中所有的核心线程都是运行状态的时候，新的任务提交就会放入等待队列中。 
+> 3. 有界队列（ArrayBlockingQueue）最大maximumPoolSize，能够降低资源消耗，但是这种方式使得线程池对线程调度变的更困难。因为线程池与队列容量都是有限的。所以想让线程池的吞吐率和处理任务达到一个合理的范围，又想使我们的线程调度相对简单，并且还尽可能降低资源的消耗，我们就需要合理的限制这两个数量 
 分配技巧： [如果想降低资源的消耗包括降低cpu使用率、操作系统资源的消耗、上下文切换的开销等等，可以设置一个较大的队列容量和较小的线程池容量，这样会降低线程池的吞吐量。如果我们提交的任务经常发生阻塞，我们可以调整maximumPoolSize。如果我们的队列容量较小，我们需要把线程池大小设置的大一些，这样cpu的使用率相对来说会高一些。但是如果线程池的容量设置的过大，提高任务的数量过多的时候，并发量会增加，那么线程之间的调度就是一个需要考虑的问题。这样反而可能会降低处理任务的吞吐量。]
 
 - keepAliveTime：线程没有任务执行时最多保持多久时间终止（当线程中的线程数量大于corePoolSize的时候，如果这时没有新的任务提交核心线程外的线程不会立即销毁，而是等待，直到超过keepAliveTime）
@@ -37,8 +38,7 @@
 
 ![](https://img-blog.csdn.net/20180505142542206?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
->
-corePoolSize、maximumPoolSize、workQueue 三者关系：如果运行的线程数小于corePoolSize的时候，直接创建新线程来处理任务。即使线程池中的其他线程是空闲的。如果运行中的线程数大于corePoolSize且小于maximumPoolSize时，那么只有当workQueue满的时候才创建新的线程去处理任务。如果corePoolSize与maximumPoolSize是相同的，那么创建的线程池大小是固定的。这时有新任务提交，当workQueue未满时，就把请求放入workQueue中。等待空线程从workQueue取出任务。如果workQueue此时也满了，那么就使用另外的拒绝策略参数去执行拒绝策略。
+> corePoolSize、maximumPoolSize、workQueue 三者关系：如果运行的线程数小于corePoolSize的时候，直接创建新线程来处理任务。即使线程池中的其他线程是空闲的。如果运行中的线程数大于corePoolSize且小于maximumPoolSize时，那么只有当workQueue满的时候才创建新的线程去处理任务。如果corePoolSize与maximumPoolSize是相同的，那么创建的线程池大小是固定的。这时有新任务提交，当workQueue未满时，就把请求放入workQueue中。等待空线程从workQueue取出任务。如果workQueue此时也满了，那么就使用另外的拒绝策略参数去执行拒绝策略。
 
 初始化方法：由七个参数组合成四个初始化方法 
 ![](https://img-blog.csdn.net/20180505141614527?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
