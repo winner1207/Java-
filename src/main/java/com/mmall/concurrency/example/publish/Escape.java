@@ -11,7 +11,7 @@ public class Escape {
 
     private int thisCanBeEscape = 0;
 
-    public Escape () {
+    public Escape() {
         new InnerClass();
     }
 
@@ -23,6 +23,12 @@ public class Escape {
     }
 
     public static void main(String[] args) {
-        new Escape();
+        String a = "5";
+        String b = "9";
+        String c = "11";
+
+        System.out.println(a.hashCode());
+        System.out.println(b.hashCode());
+        System.out.println(c.hashCode());
     }
 }
