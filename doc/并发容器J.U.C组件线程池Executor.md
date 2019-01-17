@@ -46,17 +46,17 @@ corePoolSize、maximumPoolSize、workQueue 三者关系：如果运行的线程�
 
 其他方法：
 
-| 序号 | 方法名 | 描述 |
-| 1	| execute()	| 提交任务，交给线程池执行 |
-| 2	| submit()	| 提交任务，能够返回执行结果 execute+Future |
-| 3	| shutdown() | 关闭线程池，等待任务都执行完 |
-| 4	| shutdownNow() | 关闭线程池，不等待任务执行完 |
-| 5	| getTaskCount() | 线程池已执行和未执行的任务总数 |
-| 6 | getCompleteTaskCount() | 已完成的任务数量 |
-| 7	| getPoolSize() | 线程池当前的线程数量 |
-| 8	| getActiveCount() | 当前线程池中正在执行任务的线程数量 |
+1. execute()	提交任务，交给线程池执行
+2. submit()	提交任务，能够返回执行结果 execute+Future
+3. shutdown()	关闭线程池，等待任务都执行完
+4. shutdownNow()	关闭线程池，不等待任务执行完
+5. getTaskCount()	线程池已执行和未执行的任务总数
+6. getCompleteTaskCount()	已完成的任务数量
+7. getPoolSize()	线程池当前的线程数量
+8. getActiveCount()	当前线程池中正在执行任务的线程数量
 
 线程池生命周期： 
+
 ![](https://img-blog.csdn.net/201805051421294?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 - running：能接受新提交的任务，也能处理阻塞队列中的任务
