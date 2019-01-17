@@ -10,7 +10,7 @@
 - [线程不安全类、同步容器](doc/线程不安全类、同步容器.md)
 - [并发容器J.U.C线程安全的集合与Map](doc/并发容器J.U.C线程安全的集合与Map.md)
 - [HashMap与ConcurrentHashMap](doc/HashMap与ConcurrentHashMap.md)
-- [并发容器J.U.C组件AQS](doc/并发容器J.U.C组件AQS.md)
+- [并发容器J.U.C之AQS组件CountDownLatch、Semaphore、CyclicBarrier](doc/并发容器J.U.C之AQS组件CountDownLatch、Semaphore、CyclicBarrier.md)
 - [并发容器J.U.C组件FutureTask、ForkJoin、BlockingQueue](doc/并发容器J.U.C组件FutureTask、ForkJoin、BlockingQueue.md)
 - [并发容器J.U.C组件线程池Executor](doc/并发容器J.U.C组件线程池Executor.md)
 - [线程死锁](doc/线程死锁.md)
