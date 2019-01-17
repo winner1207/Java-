@@ -9,7 +9,7 @@ HashMap的实现方式是：数组+链表 的形式。
 
 在HashMap中有两个参数会影响HashMap的性能：初始容量/加载因子
 
-> 初始容量：Hash表中桶的数量 
+> 初始容量：Hash表中桶的数量  
 > 加载因子：是Hash表在自动增加之前可以达到多满的一个尺度。
 
 HashMap在类中定义了这两个参数:
@@ -21,7 +21,7 @@ static final int DEFAULT_INITIAL_CAPACITY = 1 << 4;
 static final float DEFAULT_LOAD_FACTOR = 0.75f;
 </pre>
 
-这两个参数的作用是：当Hash表中的条目数量超过了加载因子与当前容量的乘积，将会调用resize()进行扩容，将容量翻倍。 
+这两个参数的作用是：当Hash表中的条目数量超过了加载因子与当前容量的乘积，将会调用resize()进行扩容，将容量翻倍。  
 这两个参数在初始化HashMap的时候可以进行设置：可以单独指定初始容量，也可以同时设置 
 
 ![](https://img-blog.csdn.net/20180417182851565?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2plc29uam9rZQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
