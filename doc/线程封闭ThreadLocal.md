@@ -35,14 +35,11 @@ Ad-hoc线程封闭是指，维护线程封闭性的职责完全由程序实现�
 </pre>
 
 # 3、Springboot框架中使用ThreadLocal
-说明： 
+说明：  
+1、这里不描述springboot框架的搭建过程，假定你已经有了一个可以正常运行的springboot简单项目。  
+2、我们这里的例子使用的是springboot框架中的filter与Interceptor来使用threadLocal，对于Springboot的filter与Interceptor不做过多的讲解。  
 
-1、这里不描述springboot框架的搭建过程，假定你已经有了一个可以正常运行的springboot简单项目。
- 
-2、我们这里的例子使用的是springboot框架中的filter与Interceptor来使用threadLocal，对于Springboot的filter与Interceptor不做过多的讲解。
-
-coding： 
-
+coding：  
 （1）创建一个包含ThreadLocal对象的类，并提供基础的添加、删除、获取操作。
 
 <pre>
