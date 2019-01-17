@@ -8,7 +8,7 @@
 - [不可变对象](doc/不可变对象.md)
 - [线程封闭ThreadLocal](doc/线程封闭ThreadLocal.md)
 - [线程不安全类、同步容器](doc/线程不安全类、同步容器.md)
-- [并发容器J.U.C](doc/并发容器J.U.C.md)
+- [并发容器J.U.C线程安全的集合与Map](doc/并发容器J.U.C线程安全的集合与Map.md)
 - [并发容器J.U.C组件AQS](doc/并发容器J.U.C组件AQS.md)
 - [并发容器J.U.C组件FutureTask、ForkJoin、BlockingQueue](doc/并发容器J.U.C组件FutureTask、ForkJoin、BlockingQueue.md)
 - [并发容器J.U.C组件线程池Executor](doc/并发容器J.U.C组件线程池Executor.md)
