@@ -7,6 +7,7 @@
 - [安全发布对象与多种单例模式](doc/安全发布对象与多种单例模式.md)
 - [不可变对象](doc/不可变对象.md)
 - [线程封闭ThreadLocal](doc/线程封闭ThreadLocal.md)
+- [线程不安全类、同步容器](doc/线程不安全类、同步容器.md)
 - [线程安全策略](doc/线程安全策略.md)
 - [并发容器J.U.C](doc/并发容器J.U.C.md)
 - [并发容器J.U.C组件AQS](doc/并发容器J.U.C组件AQS.md)
